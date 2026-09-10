@@ -1,0 +1,5 @@
+/cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build/CMakeFiles/tcf_convert.dir
+/cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build/CMakeFiles/mma_test.dir
+/cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build/CMakeFiles/tcf_spmm_run.dir
+/cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build/CMakeFiles/edit_cache.dir
+/cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build/CMakeFiles/rebuild_cache.dir
