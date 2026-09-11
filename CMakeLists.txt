@@ -26,4 +26,15 @@ add_executable(tcf_spmm_run
     src/format.cpp
 )
 
+add_executable(tcf_spmm_cc_run
+    src/tcf_spmm_cc_main.cu
+    src/tcf_spmm_cc.cu
+    src/format.cpp
+)
+
+target_include_directories(
+    tcf_spmm_cc_run
+    PRIVATE include
+)
+
 target_include_directories(tcf_spmm_run PRIVATE include)

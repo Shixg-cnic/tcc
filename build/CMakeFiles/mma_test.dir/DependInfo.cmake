@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/src/mma_test.cu" "CMakeFiles/mma_test.dir/src/mma_test.cu.o" "gcc" "CMakeFiles/mma_test.dir/src/mma_test.cu.o.d"
+  "/cnic/work/shixg/GNN/tc_cc_kernel/tcc/src/mma_test.cu" "CMakeFiles/mma_test.dir/src/mma_test.cu.o" "gcc" "CMakeFiles/mma_test.dir/src/mma_test.cu.o.d"
   )
 
 # Targets to which this target links.

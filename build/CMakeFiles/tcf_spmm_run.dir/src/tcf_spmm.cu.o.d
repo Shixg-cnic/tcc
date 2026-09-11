@@ -1,4 +1,4 @@
-CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm.cu.o : /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/src/tcf_spmm.cu \
+CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm.cu.o : /cnic/work/shixg/GNN/tc_cc_kernel/tcc/src/tcf_spmm.cu \
     /usr/include/stdc-predef.h \
     /usr/local/cuda/bin/../targets/sbsa-linux/include/cuda_runtime.h \
     /usr/local/cuda/bin/../targets/sbsa-linux/include/crt/host_config.h \
@@ -182,8 +182,8 @@ CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm.cu.o : /cnic/work/shixg/GNN/tc_cc_kerne
     /usr/include/c++/11/utility \
     /usr/include/c++/11/bits/stl_relops.h \
     /usr/include/c++/11/initializer_list \
-    /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/include/tcf_spmm.cuh \
-    /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/include/format.hpp \
+    /cnic/work/shixg/GNN/tc_cc_kernel/tcc/include/tcf_spmm.cuh \
+    /cnic/work/shixg/GNN/tc_cc_kernel/tcc/include/format.hpp \
     /usr/include/c++/11/cstdint \
     /usr/lib/gcc/aarch64-linux-gnu/11/include/stdint.h \
     /usr/include/stdint.h \
@@ -204,4 +204,4 @@ CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm.cu.o : /cnic/work/shixg/GNN/tc_cc_kerne
     /usr/include/c++/11/bits/hash_bytes.h \
     /usr/include/c++/11/bits/range_access.h \
     /usr/include/c++/11/bits/vector.tcc \
-    /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/include/mma_tf32.cuh
+    /cnic/work/shixg/GNN/tc_cc_kernel/tcc/include/mma_tf32.cuh

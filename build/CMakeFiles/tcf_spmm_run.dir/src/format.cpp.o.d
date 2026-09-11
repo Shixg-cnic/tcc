@@ -1,7 +1,7 @@
 CMakeFiles/tcf_spmm_run.dir/src/format.cpp.o: \
- /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/src/format.cpp \
+ /cnic/work/shixg/GNN/tc_cc_kernel/tcc/src/format.cpp \
  /usr/include/stdc-predef.h \
- /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/include/format.hpp \
+ /cnic/work/shixg/GNN/tc_cc_kernel/tcc/include/format.hpp \
  /usr/include/c++/11/cstdint \
  /usr/include/aarch64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/aarch64-linux-gnu/c++/11/bits/os_defines.h \

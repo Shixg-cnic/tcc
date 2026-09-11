@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm
+CMAKE_SOURCE_DIR = /cnic/work/shixg/GNN/tc_cc_kernel/tcc
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build
+CMAKE_BINARY_DIR = /cnic/work/shixg/GNN/tc_cc_kernel/tcc/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/tcf_spmm_run.dir/depend.make
@@ -72,8 +72,8 @@ include CMakeFiles/tcf_spmm_run.dir/flags.make
 CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm_main.cu.o: CMakeFiles/tcf_spmm_run.dir/flags.make
 CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm_main.cu.o: ../src/tcf_spmm_main.cu
 CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm_main.cu.o: CMakeFiles/tcf_spmm_run.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CUDA object CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm_main.cu.o"
-	/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm_main.cu.o -MF CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm_main.cu.o.d -x cu -c /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/src/tcf_spmm_main.cu -o CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm_main.cu.o
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CUDA object CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm_main.cu.o"
+	/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm_main.cu.o -MF CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm_main.cu.o.d -x cu -c /cnic/work/shixg/GNN/tc_cc_kernel/tcc/src/tcf_spmm_main.cu -o CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm_main.cu.o
 
 CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm_main.cu.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CUDA source to CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm_main.cu.i"
@@ -86,8 +86,8 @@ CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm_main.cu.s: cmake_force
 CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm.cu.o: CMakeFiles/tcf_spmm_run.dir/flags.make
 CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm.cu.o: ../src/tcf_spmm.cu
 CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm.cu.o: CMakeFiles/tcf_spmm_run.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CUDA object CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm.cu.o"
-	/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm.cu.o -MF CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm.cu.o.d -x cu -c /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/src/tcf_spmm.cu -o CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm.cu.o
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CUDA object CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm.cu.o"
+	/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm.cu.o -MF CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm.cu.o.d -x cu -c /cnic/work/shixg/GNN/tc_cc_kernel/tcc/src/tcf_spmm.cu -o CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm.cu.o
 
 CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm.cu.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CUDA source to CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm.cu.i"
@@ -100,16 +100,16 @@ CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm.cu.s: cmake_force
 CMakeFiles/tcf_spmm_run.dir/src/format.cpp.o: CMakeFiles/tcf_spmm_run.dir/flags.make
 CMakeFiles/tcf_spmm_run.dir/src/format.cpp.o: ../src/format.cpp
 CMakeFiles/tcf_spmm_run.dir/src/format.cpp.o: CMakeFiles/tcf_spmm_run.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/tcf_spmm_run.dir/src/format.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tcf_spmm_run.dir/src/format.cpp.o -MF CMakeFiles/tcf_spmm_run.dir/src/format.cpp.o.d -o CMakeFiles/tcf_spmm_run.dir/src/format.cpp.o -c /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/src/format.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/tcf_spmm_run.dir/src/format.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tcf_spmm_run.dir/src/format.cpp.o -MF CMakeFiles/tcf_spmm_run.dir/src/format.cpp.o.d -o CMakeFiles/tcf_spmm_run.dir/src/format.cpp.o -c /cnic/work/shixg/GNN/tc_cc_kernel/tcc/src/format.cpp
 
 CMakeFiles/tcf_spmm_run.dir/src/format.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tcf_spmm_run.dir/src/format.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/src/format.cpp > CMakeFiles/tcf_spmm_run.dir/src/format.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cnic/work/shixg/GNN/tc_cc_kernel/tcc/src/format.cpp > CMakeFiles/tcf_spmm_run.dir/src/format.cpp.i
 
 CMakeFiles/tcf_spmm_run.dir/src/format.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tcf_spmm_run.dir/src/format.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/src/format.cpp -o CMakeFiles/tcf_spmm_run.dir/src/format.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cnic/work/shixg/GNN/tc_cc_kernel/tcc/src/format.cpp -o CMakeFiles/tcf_spmm_run.dir/src/format.cpp.s
 
 # Object files for target tcf_spmm_run
 tcf_spmm_run_OBJECTS = \
@@ -125,7 +125,7 @@ tcf_spmm_run: CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm.cu.o
 tcf_spmm_run: CMakeFiles/tcf_spmm_run.dir/src/format.cpp.o
 tcf_spmm_run: CMakeFiles/tcf_spmm_run.dir/build.make
 tcf_spmm_run: CMakeFiles/tcf_spmm_run.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable tcf_spmm_run"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable tcf_spmm_run"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tcf_spmm_run.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -137,6 +137,6 @@ CMakeFiles/tcf_spmm_run.dir/clean:
 .PHONY : CMakeFiles/tcf_spmm_run.dir/clean
 
 CMakeFiles/tcf_spmm_run.dir/depend:
-	cd /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build/CMakeFiles/tcf_spmm_run.dir/DependInfo.cmake --color=$(COLOR)
+	cd /cnic/work/shixg/GNN/tc_cc_kernel/tcc/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /cnic/work/shixg/GNN/tc_cc_kernel/tcc /cnic/work/shixg/GNN/tc_cc_kernel/tcc /cnic/work/shixg/GNN/tc_cc_kernel/tcc/build /cnic/work/shixg/GNN/tc_cc_kernel/tcc/build /cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles/tcf_spmm_run.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/tcf_spmm_run.dir/depend
 

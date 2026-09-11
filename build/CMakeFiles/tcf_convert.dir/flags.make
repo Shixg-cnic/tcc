@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/include
+CXX_INCLUDES = -I/cnic/work/shixg/GNN/tc_cc_kernel/tcc/include
 
 CXX_FLAGS = 
 

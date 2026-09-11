@@ -1,7 +1,7 @@
 CMakeFiles/tcf_convert.dir/src/main.cpp.o: \
- /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/src/main.cpp \
+ /cnic/work/shixg/GNN/tc_cc_kernel/tcc/src/main.cpp \
  /usr/include/stdc-predef.h \
- /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/include/format.hpp \
+ /cnic/work/shixg/GNN/tc_cc_kernel/tcc/include/format.hpp \
  /usr/include/c++/11/cstdint \
  /usr/include/aarch64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/aarch64-linux-gnu/c++/11/bits/os_defines.h \

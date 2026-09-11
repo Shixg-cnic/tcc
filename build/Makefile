@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm
+CMAKE_SOURCE_DIR = /cnic/work/shixg/GNN/tc_cc_kernel/tcc
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build
+CMAKE_BINARY_DIR = /cnic/work/shixg/GNN/tc_cc_kernel/tcc/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build/CMakeFiles /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles /cnic/work/shixg/GNN/tc_cc_kernel/tcc/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -155,6 +155,19 @@ tcf_spmm_run/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_run.dir/build.make CMakeFiles/tcf_spmm_run.dir/build
 .PHONY : tcf_spmm_run/fast
 
+#=============================================================================
+# Target rules for targets named tcf_spmm_cc_run
+
+# Build rule for target.
+tcf_spmm_cc_run: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tcf_spmm_cc_run
+.PHONY : tcf_spmm_cc_run
+
+# fast build rule for target.
+tcf_spmm_cc_run/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_cc_run.dir/build.make CMakeFiles/tcf_spmm_cc_run.dir/build
+.PHONY : tcf_spmm_cc_run/fast
+
 src/format.o: src/format.cpp.o
 .PHONY : src/format.o
 
@@ -162,6 +175,7 @@ src/format.o: src/format.cpp.o
 src/format.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_convert.dir/build.make CMakeFiles/tcf_convert.dir/src/format.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_run.dir/build.make CMakeFiles/tcf_spmm_run.dir/src/format.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_cc_run.dir/build.make CMakeFiles/tcf_spmm_cc_run.dir/src/format.cpp.o
 .PHONY : src/format.cpp.o
 
 src/format.i: src/format.cpp.i
@@ -171,6 +185,7 @@ src/format.i: src/format.cpp.i
 src/format.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_convert.dir/build.make CMakeFiles/tcf_convert.dir/src/format.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_run.dir/build.make CMakeFiles/tcf_spmm_run.dir/src/format.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_cc_run.dir/build.make CMakeFiles/tcf_spmm_cc_run.dir/src/format.cpp.i
 .PHONY : src/format.cpp.i
 
 src/format.s: src/format.cpp.s
@@ -180,6 +195,7 @@ src/format.s: src/format.cpp.s
 src/format.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_convert.dir/build.make CMakeFiles/tcf_convert.dir/src/format.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_run.dir/build.make CMakeFiles/tcf_spmm_run.dir/src/format.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_cc_run.dir/build.make CMakeFiles/tcf_spmm_cc_run.dir/src/format.cpp.s
 .PHONY : src/format.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -254,6 +270,54 @@ src/tcf_spmm.cu.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_run.dir/build.make CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm.cu.s
 .PHONY : src/tcf_spmm.cu.s
 
+src/tcf_spmm_cc.o: src/tcf_spmm_cc.cu.o
+.PHONY : src/tcf_spmm_cc.o
+
+# target to build an object file
+src/tcf_spmm_cc.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_cc_run.dir/build.make CMakeFiles/tcf_spmm_cc_run.dir/src/tcf_spmm_cc.cu.o
+.PHONY : src/tcf_spmm_cc.cu.o
+
+src/tcf_spmm_cc.i: src/tcf_spmm_cc.cu.i
+.PHONY : src/tcf_spmm_cc.i
+
+# target to preprocess a source file
+src/tcf_spmm_cc.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_cc_run.dir/build.make CMakeFiles/tcf_spmm_cc_run.dir/src/tcf_spmm_cc.cu.i
+.PHONY : src/tcf_spmm_cc.cu.i
+
+src/tcf_spmm_cc.s: src/tcf_spmm_cc.cu.s
+.PHONY : src/tcf_spmm_cc.s
+
+# target to generate assembly for a file
+src/tcf_spmm_cc.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_cc_run.dir/build.make CMakeFiles/tcf_spmm_cc_run.dir/src/tcf_spmm_cc.cu.s
+.PHONY : src/tcf_spmm_cc.cu.s
+
+src/tcf_spmm_cc_main.o: src/tcf_spmm_cc_main.cu.o
+.PHONY : src/tcf_spmm_cc_main.o
+
+# target to build an object file
+src/tcf_spmm_cc_main.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_cc_run.dir/build.make CMakeFiles/tcf_spmm_cc_run.dir/src/tcf_spmm_cc_main.cu.o
+.PHONY : src/tcf_spmm_cc_main.cu.o
+
+src/tcf_spmm_cc_main.i: src/tcf_spmm_cc_main.cu.i
+.PHONY : src/tcf_spmm_cc_main.i
+
+# target to preprocess a source file
+src/tcf_spmm_cc_main.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_cc_run.dir/build.make CMakeFiles/tcf_spmm_cc_run.dir/src/tcf_spmm_cc_main.cu.i
+.PHONY : src/tcf_spmm_cc_main.cu.i
+
+src/tcf_spmm_cc_main.s: src/tcf_spmm_cc_main.cu.s
+.PHONY : src/tcf_spmm_cc_main.s
+
+# target to generate assembly for a file
+src/tcf_spmm_cc_main.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_cc_run.dir/build.make CMakeFiles/tcf_spmm_cc_run.dir/src/tcf_spmm_cc_main.cu.s
+.PHONY : src/tcf_spmm_cc_main.cu.s
+
 src/tcf_spmm_main.o: src/tcf_spmm_main.cu.o
 .PHONY : src/tcf_spmm_main.o
 
@@ -288,6 +352,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... mma_test"
 	@echo "... tcf_convert"
+	@echo "... tcf_spmm_cc_run"
 	@echo "... tcf_spmm_run"
 	@echo "... src/format.o"
 	@echo "... src/format.i"
@@ -301,6 +366,12 @@ help:
 	@echo "... src/tcf_spmm.o"
 	@echo "... src/tcf_spmm.i"
 	@echo "... src/tcf_spmm.s"
+	@echo "... src/tcf_spmm_cc.o"
+	@echo "... src/tcf_spmm_cc.i"
+	@echo "... src/tcf_spmm_cc.s"
+	@echo "... src/tcf_spmm_cc_main.o"
+	@echo "... src/tcf_spmm_cc_main.i"
+	@echo "... src/tcf_spmm_cc_main.s"
 	@echo "... src/tcf_spmm_main.o"
 	@echo "... src/tcf_spmm_main.i"
 	@echo "... src/tcf_spmm_main.s"

@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/src/format.cpp" "CMakeFiles/tcf_convert.dir/src/format.cpp.o" "gcc" "CMakeFiles/tcf_convert.dir/src/format.cpp.o.d"
-  "/cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/src/main.cpp" "CMakeFiles/tcf_convert.dir/src/main.cpp.o" "gcc" "CMakeFiles/tcf_convert.dir/src/main.cpp.o.d"
+  "/cnic/work/shixg/GNN/tc_cc_kernel/tcc/src/format.cpp" "CMakeFiles/tcf_convert.dir/src/format.cpp.o" "gcc" "CMakeFiles/tcf_convert.dir/src/format.cpp.o.d"
+  "/cnic/work/shixg/GNN/tc_cc_kernel/tcc/src/main.cpp" "CMakeFiles/tcf_convert.dir/src/main.cpp.o" "gcc" "CMakeFiles/tcf_convert.dir/src/main.cpp.o.d"
   )
 
 # Targets to which this target links.

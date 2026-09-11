@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/src/tcf_spmm.cu" "CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm.cu.o" "gcc" "CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm.cu.o.d"
-  "/cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/src/tcf_spmm_main.cu" "CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm_main.cu.o" "gcc" "CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm_main.cu.o.d"
-  "/cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/src/format.cpp" "CMakeFiles/tcf_spmm_run.dir/src/format.cpp.o" "gcc" "CMakeFiles/tcf_spmm_run.dir/src/format.cpp.o.d"
+  "/cnic/work/shixg/GNN/tc_cc_kernel/tcc/src/tcf_spmm.cu" "CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm.cu.o" "gcc" "CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm.cu.o.d"
+  "/cnic/work/shixg/GNN/tc_cc_kernel/tcc/src/tcf_spmm_main.cu" "CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm_main.cu.o" "gcc" "CMakeFiles/tcf_spmm_run.dir/src/tcf_spmm_main.cu.o.d"
+  "/cnic/work/shixg/GNN/tc_cc_kernel/tcc/src/format.cpp" "CMakeFiles/tcf_spmm_run.dir/src/format.cpp.o" "gcc" "CMakeFiles/tcf_spmm_run.dir/src/format.cpp.o.d"
   )
 
 # Targets to which this target links.

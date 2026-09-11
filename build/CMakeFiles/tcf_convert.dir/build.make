@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm
+CMAKE_SOURCE_DIR = /cnic/work/shixg/GNN/tc_cc_kernel/tcc
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build
+CMAKE_BINARY_DIR = /cnic/work/shixg/GNN/tc_cc_kernel/tcc/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/tcf_convert.dir/depend.make
@@ -72,30 +72,30 @@ include CMakeFiles/tcf_convert.dir/flags.make
 CMakeFiles/tcf_convert.dir/src/main.cpp.o: CMakeFiles/tcf_convert.dir/flags.make
 CMakeFiles/tcf_convert.dir/src/main.cpp.o: ../src/main.cpp
 CMakeFiles/tcf_convert.dir/src/main.cpp.o: CMakeFiles/tcf_convert.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/tcf_convert.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tcf_convert.dir/src/main.cpp.o -MF CMakeFiles/tcf_convert.dir/src/main.cpp.o.d -o CMakeFiles/tcf_convert.dir/src/main.cpp.o -c /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/tcf_convert.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tcf_convert.dir/src/main.cpp.o -MF CMakeFiles/tcf_convert.dir/src/main.cpp.o.d -o CMakeFiles/tcf_convert.dir/src/main.cpp.o -c /cnic/work/shixg/GNN/tc_cc_kernel/tcc/src/main.cpp
 
 CMakeFiles/tcf_convert.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tcf_convert.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/src/main.cpp > CMakeFiles/tcf_convert.dir/src/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cnic/work/shixg/GNN/tc_cc_kernel/tcc/src/main.cpp > CMakeFiles/tcf_convert.dir/src/main.cpp.i
 
 CMakeFiles/tcf_convert.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tcf_convert.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/src/main.cpp -o CMakeFiles/tcf_convert.dir/src/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cnic/work/shixg/GNN/tc_cc_kernel/tcc/src/main.cpp -o CMakeFiles/tcf_convert.dir/src/main.cpp.s
 
 CMakeFiles/tcf_convert.dir/src/format.cpp.o: CMakeFiles/tcf_convert.dir/flags.make
 CMakeFiles/tcf_convert.dir/src/format.cpp.o: ../src/format.cpp
 CMakeFiles/tcf_convert.dir/src/format.cpp.o: CMakeFiles/tcf_convert.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/tcf_convert.dir/src/format.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tcf_convert.dir/src/format.cpp.o -MF CMakeFiles/tcf_convert.dir/src/format.cpp.o.d -o CMakeFiles/tcf_convert.dir/src/format.cpp.o -c /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/src/format.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/tcf_convert.dir/src/format.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tcf_convert.dir/src/format.cpp.o -MF CMakeFiles/tcf_convert.dir/src/format.cpp.o.d -o CMakeFiles/tcf_convert.dir/src/format.cpp.o -c /cnic/work/shixg/GNN/tc_cc_kernel/tcc/src/format.cpp
 
 CMakeFiles/tcf_convert.dir/src/format.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tcf_convert.dir/src/format.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/src/format.cpp > CMakeFiles/tcf_convert.dir/src/format.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cnic/work/shixg/GNN/tc_cc_kernel/tcc/src/format.cpp > CMakeFiles/tcf_convert.dir/src/format.cpp.i
 
 CMakeFiles/tcf_convert.dir/src/format.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tcf_convert.dir/src/format.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/src/format.cpp -o CMakeFiles/tcf_convert.dir/src/format.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cnic/work/shixg/GNN/tc_cc_kernel/tcc/src/format.cpp -o CMakeFiles/tcf_convert.dir/src/format.cpp.s
 
 # Object files for target tcf_convert
 tcf_convert_OBJECTS = \
@@ -109,7 +109,7 @@ tcf_convert: CMakeFiles/tcf_convert.dir/src/main.cpp.o
 tcf_convert: CMakeFiles/tcf_convert.dir/src/format.cpp.o
 tcf_convert: CMakeFiles/tcf_convert.dir/build.make
 tcf_convert: CMakeFiles/tcf_convert.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable tcf_convert"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable tcf_convert"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tcf_convert.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -121,6 +121,6 @@ CMakeFiles/tcf_convert.dir/clean:
 .PHONY : CMakeFiles/tcf_convert.dir/clean
 
 CMakeFiles/tcf_convert.dir/depend:
-	cd /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build /cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/build/CMakeFiles/tcf_convert.dir/DependInfo.cmake --color=$(COLOR)
+	cd /cnic/work/shixg/GNN/tc_cc_kernel/tcc/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /cnic/work/shixg/GNN/tc_cc_kernel/tcc /cnic/work/shixg/GNN/tc_cc_kernel/tcc /cnic/work/shixg/GNN/tc_cc_kernel/tcc/build /cnic/work/shixg/GNN/tc_cc_kernel/tcc/build /cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles/tcf_convert.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/tcf_convert.dir/depend
 

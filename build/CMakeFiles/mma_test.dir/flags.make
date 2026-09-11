@@ -4,7 +4,7 @@
 # compile CUDA with /usr/local/cuda/bin/nvcc
 CUDA_DEFINES = 
 
-CUDA_INCLUDES = -I/cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/include
+CUDA_INCLUDES = -I/cnic/work/shixg/GNN/tc_cc_kernel/tcc/include
 
 CUDA_FLAGS =  --generate-code=arch=compute_90,code=[compute_90,sm_90] -std=c++17
 
