@@ -36,7 +36,7 @@ int main(int argc, char** argv) {
     const std::string outputPath =
         argc > 2
             ? argv[2]
-            : "/cnic/work/shixg/GNN/tc_cc_kernel/TccSpmm/test/data/arxiv_tcf_cc_output.bin";
+            : "/cnic/work/shixg/GNN/tc_cc_kernel/test/data/arxiv_tcf_cc_output.bin";
 
     constexpr tcc::IndexType featureDim = 128;
 
