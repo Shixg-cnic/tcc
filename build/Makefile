@@ -168,6 +168,19 @@ tcf_spmm_cc_run/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_cc_run.dir/build.make CMakeFiles/tcf_spmm_cc_run.dir/build
 .PHONY : tcf_spmm_cc_run/fast
 
+#=============================================================================
+# Target rules for targets named tcf_spmm_hybrid_run
+
+# Build rule for target.
+tcf_spmm_hybrid_run: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tcf_spmm_hybrid_run
+.PHONY : tcf_spmm_hybrid_run
+
+# fast build rule for target.
+tcf_spmm_hybrid_run/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_hybrid_run.dir/build.make CMakeFiles/tcf_spmm_hybrid_run.dir/build
+.PHONY : tcf_spmm_hybrid_run/fast
+
 src/format.o: src/format.cpp.o
 .PHONY : src/format.o
 
@@ -176,6 +189,7 @@ src/format.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_convert.dir/build.make CMakeFiles/tcf_convert.dir/src/format.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_run.dir/build.make CMakeFiles/tcf_spmm_run.dir/src/format.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_cc_run.dir/build.make CMakeFiles/tcf_spmm_cc_run.dir/src/format.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_hybrid_run.dir/build.make CMakeFiles/tcf_spmm_hybrid_run.dir/src/format.cpp.o
 .PHONY : src/format.cpp.o
 
 src/format.i: src/format.cpp.i
@@ -186,6 +200,7 @@ src/format.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_convert.dir/build.make CMakeFiles/tcf_convert.dir/src/format.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_run.dir/build.make CMakeFiles/tcf_spmm_run.dir/src/format.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_cc_run.dir/build.make CMakeFiles/tcf_spmm_cc_run.dir/src/format.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_hybrid_run.dir/build.make CMakeFiles/tcf_spmm_hybrid_run.dir/src/format.cpp.i
 .PHONY : src/format.cpp.i
 
 src/format.s: src/format.cpp.s
@@ -196,6 +211,7 @@ src/format.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_convert.dir/build.make CMakeFiles/tcf_convert.dir/src/format.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_run.dir/build.make CMakeFiles/tcf_spmm_run.dir/src/format.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_cc_run.dir/build.make CMakeFiles/tcf_spmm_cc_run.dir/src/format.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_hybrid_run.dir/build.make CMakeFiles/tcf_spmm_hybrid_run.dir/src/format.cpp.s
 .PHONY : src/format.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -318,6 +334,54 @@ src/tcf_spmm_cc_main.cu.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_cc_run.dir/build.make CMakeFiles/tcf_spmm_cc_run.dir/src/tcf_spmm_cc_main.cu.s
 .PHONY : src/tcf_spmm_cc_main.cu.s
 
+src/tcf_spmm_hybrid.o: src/tcf_spmm_hybrid.cu.o
+.PHONY : src/tcf_spmm_hybrid.o
+
+# target to build an object file
+src/tcf_spmm_hybrid.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_hybrid_run.dir/build.make CMakeFiles/tcf_spmm_hybrid_run.dir/src/tcf_spmm_hybrid.cu.o
+.PHONY : src/tcf_spmm_hybrid.cu.o
+
+src/tcf_spmm_hybrid.i: src/tcf_spmm_hybrid.cu.i
+.PHONY : src/tcf_spmm_hybrid.i
+
+# target to preprocess a source file
+src/tcf_spmm_hybrid.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_hybrid_run.dir/build.make CMakeFiles/tcf_spmm_hybrid_run.dir/src/tcf_spmm_hybrid.cu.i
+.PHONY : src/tcf_spmm_hybrid.cu.i
+
+src/tcf_spmm_hybrid.s: src/tcf_spmm_hybrid.cu.s
+.PHONY : src/tcf_spmm_hybrid.s
+
+# target to generate assembly for a file
+src/tcf_spmm_hybrid.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_hybrid_run.dir/build.make CMakeFiles/tcf_spmm_hybrid_run.dir/src/tcf_spmm_hybrid.cu.s
+.PHONY : src/tcf_spmm_hybrid.cu.s
+
+src/tcf_spmm_hybrid_main.o: src/tcf_spmm_hybrid_main.cu.o
+.PHONY : src/tcf_spmm_hybrid_main.o
+
+# target to build an object file
+src/tcf_spmm_hybrid_main.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_hybrid_run.dir/build.make CMakeFiles/tcf_spmm_hybrid_run.dir/src/tcf_spmm_hybrid_main.cu.o
+.PHONY : src/tcf_spmm_hybrid_main.cu.o
+
+src/tcf_spmm_hybrid_main.i: src/tcf_spmm_hybrid_main.cu.i
+.PHONY : src/tcf_spmm_hybrid_main.i
+
+# target to preprocess a source file
+src/tcf_spmm_hybrid_main.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_hybrid_run.dir/build.make CMakeFiles/tcf_spmm_hybrid_run.dir/src/tcf_spmm_hybrid_main.cu.i
+.PHONY : src/tcf_spmm_hybrid_main.cu.i
+
+src/tcf_spmm_hybrid_main.s: src/tcf_spmm_hybrid_main.cu.s
+.PHONY : src/tcf_spmm_hybrid_main.s
+
+# target to generate assembly for a file
+src/tcf_spmm_hybrid_main.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_hybrid_run.dir/build.make CMakeFiles/tcf_spmm_hybrid_run.dir/src/tcf_spmm_hybrid_main.cu.s
+.PHONY : src/tcf_spmm_hybrid_main.cu.s
+
 src/tcf_spmm_main.o: src/tcf_spmm_main.cu.o
 .PHONY : src/tcf_spmm_main.o
 
@@ -353,6 +417,7 @@ help:
 	@echo "... mma_test"
 	@echo "... tcf_convert"
 	@echo "... tcf_spmm_cc_run"
+	@echo "... tcf_spmm_hybrid_run"
 	@echo "... tcf_spmm_run"
 	@echo "... src/format.o"
 	@echo "... src/format.i"
@@ -372,6 +437,12 @@ help:
 	@echo "... src/tcf_spmm_cc_main.o"
 	@echo "... src/tcf_spmm_cc_main.i"
 	@echo "... src/tcf_spmm_cc_main.s"
+	@echo "... src/tcf_spmm_hybrid.o"
+	@echo "... src/tcf_spmm_hybrid.i"
+	@echo "... src/tcf_spmm_hybrid.s"
+	@echo "... src/tcf_spmm_hybrid_main.o"
+	@echo "... src/tcf_spmm_hybrid_main.i"
+	@echo "... src/tcf_spmm_hybrid_main.s"
 	@echo "... src/tcf_spmm_main.o"
 	@echo "... src/tcf_spmm_main.i"
 	@echo "... src/tcf_spmm_main.s"

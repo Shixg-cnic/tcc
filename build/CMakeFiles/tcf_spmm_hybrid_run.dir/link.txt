@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/tcf_spmm_hybrid_run.dir/src/tcf_spmm_hybrid_main.cu.o CMakeFiles/tcf_spmm_hybrid_run.dir/src/tcf_spmm_hybrid.cu.o CMakeFiles/tcf_spmm_hybrid_run.dir/src/format.cpp.o -o tcf_spmm_hybrid_run   -L/usr/local/cuda/targets/sbsa-linux/lib/stubs  -L/usr/local/cuda/targets/sbsa-linux/lib  -lcudadevrt -lcudart_static -lrt -lpthread -ldl 

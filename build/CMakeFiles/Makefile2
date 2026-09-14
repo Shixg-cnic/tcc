@@ -67,6 +67,7 @@ all: CMakeFiles/tcf_convert.dir/all
 all: CMakeFiles/mma_test.dir/all
 all: CMakeFiles/tcf_spmm_run.dir/all
 all: CMakeFiles/tcf_spmm_cc_run.dir/all
+all: CMakeFiles/tcf_spmm_hybrid_run.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -78,6 +79,7 @@ clean: CMakeFiles/tcf_convert.dir/clean
 clean: CMakeFiles/mma_test.dir/clean
 clean: CMakeFiles/tcf_spmm_run.dir/clean
 clean: CMakeFiles/tcf_spmm_cc_run.dir/clean
+clean: CMakeFiles/tcf_spmm_hybrid_run.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -139,7 +141,7 @@ CMakeFiles/mma_test.dir/clean:
 CMakeFiles/tcf_spmm_run.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_run.dir/build.make CMakeFiles/tcf_spmm_run.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_run.dir/build.make CMakeFiles/tcf_spmm_run.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles --progress-num=10,11,12,13 "Built target tcf_spmm_run"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles --progress-num=14,15,16,17 "Built target tcf_spmm_run"
 .PHONY : CMakeFiles/tcf_spmm_run.dir/all
 
 # Build rule for subdir invocation for target.
@@ -183,6 +185,32 @@ tcf_spmm_cc_run: CMakeFiles/tcf_spmm_cc_run.dir/rule
 CMakeFiles/tcf_spmm_cc_run.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_cc_run.dir/build.make CMakeFiles/tcf_spmm_cc_run.dir/clean
 .PHONY : CMakeFiles/tcf_spmm_cc_run.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/tcf_spmm_hybrid_run.dir
+
+# All Build rule for target.
+CMakeFiles/tcf_spmm_hybrid_run.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_hybrid_run.dir/build.make CMakeFiles/tcf_spmm_hybrid_run.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_hybrid_run.dir/build.make CMakeFiles/tcf_spmm_hybrid_run.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles --progress-num=10,11,12,13 "Built target tcf_spmm_hybrid_run"
+.PHONY : CMakeFiles/tcf_spmm_hybrid_run.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/tcf_spmm_hybrid_run.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/tcf_spmm_hybrid_run.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles 0
+.PHONY : CMakeFiles/tcf_spmm_hybrid_run.dir/rule
+
+# Convenience name for target.
+tcf_spmm_hybrid_run: CMakeFiles/tcf_spmm_hybrid_run.dir/rule
+.PHONY : tcf_spmm_hybrid_run
+
+# clean rule for target.
+CMakeFiles/tcf_spmm_hybrid_run.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_hybrid_run.dir/build.make CMakeFiles/tcf_spmm_hybrid_run.dir/clean
+.PHONY : CMakeFiles/tcf_spmm_hybrid_run.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

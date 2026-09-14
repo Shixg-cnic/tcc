@@ -38,3 +38,13 @@ target_include_directories(
 )
 
 target_include_directories(tcf_spmm_run PRIVATE include)
+add_executable(tcf_spmm_hybrid_run
+    src/tcf_spmm_hybrid_main.cu
+    src/tcf_spmm_hybrid.cu
+    src/format.cpp
+)
+
+target_include_directories(
+    tcf_spmm_hybrid_run
+    PRIVATE include
+)
