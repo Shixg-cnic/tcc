@@ -2,7 +2,7 @@
 
 #include <cstdint>
 #include <vector>
-
+#include <limits>
 namespace tcc {
 
 using IndexType = std::uint32_t;
@@ -62,7 +62,7 @@ public:
     IndexType superWindowSize = 0;
     
     std::vector<OffsetType> superWindowRowOffset;
-    std::vector<IndexType>  superWindowSize;
+    std::vector<IndexType>  superWindowRows;
     std::vector<OffsetType> colWindowOffset;
     std::vector<OffsetType> tileOffset;
     std::vector<IndexType>  tileRowSlot;
