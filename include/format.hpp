@@ -54,4 +54,30 @@ public:
     void convertFromCSR(const CSRMatrix& csr);
 };
 
+class SWTCFMatrix : public SparseMatrix {
+public:
+    static constexpr IndexType INVALID_ROW_SLOT = std::numeric_limits<IndexType>::max();
+    IndexType colWindowWidth = 0;
+    IndexType tileRows = 0;
+    IndexType superWindowSize = 0;
+    
+    std::vector<OffsetType> superWindowRowOffset;
+    std::vector<IndexType>  superWindowSize;
+    std::vector<OffsetType> colWindowOffset;
+    std::vector<OffsetType> tileOffset;
+    std::vector<IndexType>  tileRowSlot;
+    std::vector<BitmapType> tileLocalBit;
+    
+    SWTCFMatrix();
+    SWTCFMatrix(
+        IndexType rows_,
+        IndexType cols_,
+        IndexType nnz_,
+        IndexType colWindowWidth_,
+        IndexType tileRows_,
+        IndexType superWindowSize_
+    );
+};
+
+
 }  // namespace tcc

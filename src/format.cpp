@@ -136,4 +136,18 @@ void TCFMatrix::convertFromCSR(const CSRMatrix& csr) {
     }
 }
 
+SWTCFMatrix::SWTCFMatrix() = default;
+SWTCFMatrix::SWTCFMatrix(
+    IndexType rows_,
+    IndexType cols_,
+    IndexType nnz_,
+    IndexType colWindowWidth_,
+    IndexType tileRows_,
+    IndexType superWindowSize_
+)
+    :SparseMatrix(rows_, cols_, nnz_),
+     colWindowWidth(colWindowWidth_),
+     tileRows(tileRows_),
+     superWindowSize(superWindowSize_) {}
+
 }  // namespace tcc

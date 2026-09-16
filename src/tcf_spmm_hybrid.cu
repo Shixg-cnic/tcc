@@ -39,27 +39,27 @@ __global__ void tcfSpmmHybridKernel(
     mmaA0[0] = column0 < cols ? matrixX[column0 * featureDim + featureBase + group] : 0.0f;
     mmaA0[1] = column0 < cols ? matrixX[column0 * featureDim + featureBase + group + 8] : 0.0f;
     mmaA0[2] = column1 < cols ? matrixX[column1 * featureDim + featureBase + group] : 0.0f;
-    mmaA0[4] = column1 < cols ? matrixX[column1 * featureDim + featureBase + group + 8] : 0.0f;
-    mmaA1[0] = column0 < cols ? matrixX[column0 * featureDim +featureBase +FEATURES_PER_MMA + 8] : 0.0f;
+    mmaA0[3] = column1 < cols ? matrixX[column1 * featureDim + featureBase + group + 8] : 0.0f;
+    mmaA1[0] = column0 < cols ? matrixX[column0 * featureDim + featureBase + FEATURES_PER_MMA + group] : 0.0f;
     mmaA1[1] = column0 < cols ? matrixX[column0 * featureDim + featureBase + FEATURES_PER_MMA + group + 8] : 0.0f;
     mmaA1[2] = column1 < cols ? matrixX[column1 * featureDim + featureBase + FEATURES_PER_MMA + group] : 0.0f;
     mmaA1[3] = column1 < cols ? matrixX[column1 * featureDim + featureBase + FEATURES_PER_MMA + group + 8] : 0.0f;
 
     __shared__ ValueType sparseTile[TILE_ROWS * COL_WINDOW_WIDTH];
-    const int thread = threadIdx.y * blocDim.x + threadIdx.x;
+    const int thread = threadIdx.y * blockDim.x + threadIdx.x;
     const OffsetType tileBegin = colWindowOffset[colWindow];
     const OffsetType tileEnd = colWindowOffset[colWindow + 1];
     
     for(OffsetType tile = tileBegin; tile < tileEnd; tile++) {
         const BitmapType bitmap = tileLocalBit[tile];
         const OffsetType valueBegin = tileOffset[tile];
-        const IndexType tileNnz = static_cast<IndexType>(___popcll(static_cast<unsigned long long>(bitmap)))；
+        const IndexType tileNnz = static_cast<IndexType>(__popcll(static_cast<unsigned long long>(bitmap)));
         if(tileNnz >= HYBRID_TC_THRESHOLD) {
             if(thread < TILE_ROWS * COL_WINDOW_WIDTH) {
                 const BitmapType currentBit = BitmapType{1} << thread;
                 if(bitmap & currentBit) {
                     const BitmapType lowerBits = bitmap & (currentBit - 1);
-                    const OffsetType valueIndex = valueBegin + static_cast<OffsetType>(___popcll(static_cast<unsigned long long>(lowerBits)));
+                    const OffsetType valueIndex = valueBegin + static_cast<OffsetType>(__popcll(static_cast<unsigned long long>(lowerBits)));
                     sparseTile[thread] = values[valueIndex];
                 } else {
                     sparseTile[thread] = 0.0f;
@@ -87,7 +87,7 @@ __global__ void tcfSpmmHybridKernel(
                 atomicAdd(&matrixY[globalRow0 * featureDim + feature0], mmaC0[0]);
                 atomicAdd(&matrixY[globalRow0 * featureDim + feature1], mmaC0[2]);
                 atomicAdd(&matrixY[globalRow0 * featureDim + feature2], mmaC1[0]);
-                atomicAdd(&matrixY[globalRow0 * featureDim + feature4], mmaC1[2]);
+                atomicAdd(&matrixY[globalRow0 * featureDim + feature3], mmaC1[2]);
             }
             if(globalRow1 < rows){
                 atomicAdd(&matrixY[globalRow1 * featureDim + feature0], mmaC0[1]);
@@ -109,7 +109,7 @@ __global__ void tcfSpmmHybridKernel(
                         const BitmapType currentBit = BitmapType{1}<< bitPosition;
                         if(bitmap & currentBit) {
                             const BitmapType lowerBits = bitmap & (currentBit - 1);
-                            const OffsetType valueIndex = valueBegin + static_cast<OffsetType>(___popcll(static_cast<unsigned long long>)(lowerBits));
+                            const OffsetType valueIndex = valueBegin + static_cast<OffsetType>(__popcll(static_cast<unsigned long long>(lowerBits)));
                             const ValueType a = values[valueIndex];
                             const ValueType x =matrixX[globalCol * featureDim + feature];
                             sum += a * x;

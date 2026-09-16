@@ -4,7 +4,7 @@
 
 namespace tcc {
 
-constexpr IndexType HYBRID_TC_THRESHOLD = 8;
+constexpr IndexType HYBRID_TC_THRESHOLD = 10;
 
 void launchTcfSpMMHybrid(
     const OffsetType* colWindowOffset,
