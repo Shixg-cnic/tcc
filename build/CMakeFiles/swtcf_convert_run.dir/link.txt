@@ -1,0 +1,1 @@
+/usr/bin/g++ CMakeFiles/swtcf_convert_run.dir/src/swtcf_convert_main.cu.o CMakeFiles/swtcf_convert_run.dir/src/swtcf_convert.cu.o -o swtcf_convert_run  -lcudadevrt -lcudart_static -lrt -lpthread -ldl  -L"/usr/local/cuda/targets/sbsa-linux/lib/stubs" -L"/usr/local/cuda/targets/sbsa-linux/lib"

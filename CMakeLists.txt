@@ -48,3 +48,13 @@ target_include_directories(
     tcf_spmm_hybrid_run
     PRIVATE include
 )
+
+add_executable(swtcf_convert_run
+    src/swtcf_convert_main.cu
+    src/swtcf_convert.cu
+)
+
+target_include_directories(
+    swtcf_convert_run
+    PRIVATE include
+)

@@ -64,7 +64,7 @@ public:
     std::vector<OffsetType> superWindowRowOffset;
     std::vector<IndexType>  superWindowRows;
     std::vector<OffsetType> colWindowOffset;
-    std::vector<OffsetType> tileOffset;
+    // std::vector<OffsetType> tileOffset;
     std::vector<IndexType>  tileRowSlot;
     std::vector<BitmapType> tileLocalBit;
     

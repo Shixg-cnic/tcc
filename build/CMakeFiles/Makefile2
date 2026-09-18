@@ -68,6 +68,7 @@ all: CMakeFiles/mma_test.dir/all
 all: CMakeFiles/tcf_spmm_run.dir/all
 all: CMakeFiles/tcf_spmm_cc_run.dir/all
 all: CMakeFiles/tcf_spmm_hybrid_run.dir/all
+all: CMakeFiles/swtcf_convert_run.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -80,6 +81,7 @@ clean: CMakeFiles/mma_test.dir/clean
 clean: CMakeFiles/tcf_spmm_run.dir/clean
 clean: CMakeFiles/tcf_spmm_cc_run.dir/clean
 clean: CMakeFiles/tcf_spmm_hybrid_run.dir/clean
+clean: CMakeFiles/swtcf_convert_run.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -89,7 +91,7 @@ clean: CMakeFiles/tcf_spmm_hybrid_run.dir/clean
 CMakeFiles/tcf_convert.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_convert.dir/build.make CMakeFiles/tcf_convert.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_convert.dir/build.make CMakeFiles/tcf_convert.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles --progress-num=3,4,5 "Built target tcf_convert"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles --progress-num=6,7,8 "Built target tcf_convert"
 .PHONY : CMakeFiles/tcf_convert.dir/all
 
 # Build rule for subdir invocation for target.
@@ -141,7 +143,7 @@ CMakeFiles/mma_test.dir/clean:
 CMakeFiles/tcf_spmm_run.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_run.dir/build.make CMakeFiles/tcf_spmm_run.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_run.dir/build.make CMakeFiles/tcf_spmm_run.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles --progress-num=14,15,16,17 "Built target tcf_spmm_run"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles --progress-num=17,18,19,20 "Built target tcf_spmm_run"
 .PHONY : CMakeFiles/tcf_spmm_run.dir/all
 
 # Build rule for subdir invocation for target.
@@ -167,7 +169,7 @@ CMakeFiles/tcf_spmm_run.dir/clean:
 CMakeFiles/tcf_spmm_cc_run.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_cc_run.dir/build.make CMakeFiles/tcf_spmm_cc_run.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_cc_run.dir/build.make CMakeFiles/tcf_spmm_cc_run.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles --progress-num=6,7,8,9 "Built target tcf_spmm_cc_run"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles --progress-num=9,10,11,12 "Built target tcf_spmm_cc_run"
 .PHONY : CMakeFiles/tcf_spmm_cc_run.dir/all
 
 # Build rule for subdir invocation for target.
@@ -193,7 +195,7 @@ CMakeFiles/tcf_spmm_cc_run.dir/clean:
 CMakeFiles/tcf_spmm_hybrid_run.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_hybrid_run.dir/build.make CMakeFiles/tcf_spmm_hybrid_run.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_hybrid_run.dir/build.make CMakeFiles/tcf_spmm_hybrid_run.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles --progress-num=10,11,12,13 "Built target tcf_spmm_hybrid_run"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles --progress-num=13,14,15,16 "Built target tcf_spmm_hybrid_run"
 .PHONY : CMakeFiles/tcf_spmm_hybrid_run.dir/all
 
 # Build rule for subdir invocation for target.
@@ -211,6 +213,32 @@ tcf_spmm_hybrid_run: CMakeFiles/tcf_spmm_hybrid_run.dir/rule
 CMakeFiles/tcf_spmm_hybrid_run.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcf_spmm_hybrid_run.dir/build.make CMakeFiles/tcf_spmm_hybrid_run.dir/clean
 .PHONY : CMakeFiles/tcf_spmm_hybrid_run.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/swtcf_convert_run.dir
+
+# All Build rule for target.
+CMakeFiles/swtcf_convert_run.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swtcf_convert_run.dir/build.make CMakeFiles/swtcf_convert_run.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swtcf_convert_run.dir/build.make CMakeFiles/swtcf_convert_run.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles --progress-num=3,4,5 "Built target swtcf_convert_run"
+.PHONY : CMakeFiles/swtcf_convert_run.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/swtcf_convert_run.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/swtcf_convert_run.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles 0
+.PHONY : CMakeFiles/swtcf_convert_run.dir/rule
+
+# Convenience name for target.
+swtcf_convert_run: CMakeFiles/swtcf_convert_run.dir/rule
+.PHONY : swtcf_convert_run
+
+# clean rule for target.
+CMakeFiles/swtcf_convert_run.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swtcf_convert_run.dir/build.make CMakeFiles/swtcf_convert_run.dir/clean
+.PHONY : CMakeFiles/swtcf_convert_run.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
