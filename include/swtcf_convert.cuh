@@ -1,6 +1,6 @@
 #pragma once
 
-#include "format.hpp"
+#include "types.h"
 
 #include <cuda_runtime.h>
 
