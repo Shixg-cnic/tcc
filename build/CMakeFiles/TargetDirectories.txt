@@ -1,4 +1,0 @@
-/cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles/swtcf_convert_run.dir
-/cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles/swtcf_spmm_run.dir
-/cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles/edit_cache.dir
-/cnic/work/shixg/GNN/tc_cc_kernel/tcc/build/CMakeFiles/rebuild_cache.dir

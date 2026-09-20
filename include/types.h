@@ -1,8 +1,7 @@
 #pragma once
 
 #include <cstdint>
-#include <vector>
-#include <limits>
+
 namespace tcc {
 
 using IndexType = std::uint32_t;
