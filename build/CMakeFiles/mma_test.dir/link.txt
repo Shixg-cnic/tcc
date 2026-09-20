@@ -1,1 +1,0 @@
-/usr/bin/g++ CMakeFiles/mma_test.dir/src/mma_test.cu.o -o mma_test  -lcudadevrt -lcudart_static -lrt -lpthread -ldl  -L"/usr/local/cuda/targets/sbsa-linux/lib/stubs" -L"/usr/local/cuda/targets/sbsa-linux/lib"

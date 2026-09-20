@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/tcf_convert.dir/src/main.cpp.o CMakeFiles/tcf_convert.dir/src/format.cpp.o -o tcf_convert 
