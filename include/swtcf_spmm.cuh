@@ -1,7 +1,7 @@
 #pragma once
 
 #include "swtcf_convert.cuh"
-#include <cuda_runtime>
+#include <cuda_runtime.h>
 
 namespace tcc {
 

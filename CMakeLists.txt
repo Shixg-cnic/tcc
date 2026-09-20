@@ -58,3 +58,11 @@ target_include_directories(
     swtcf_convert_run
     PRIVATE include
 )
+
+add_executable(swtcf_spmm_run
+    src/swtcf_spmm_main.cu
+    src/swtcf_spmm.cu
+    src/swtcf_convert.cu
+)
+
+target_include_directories(swtcf_spmm_run PRIVATE include)

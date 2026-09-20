@@ -48,4 +48,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/tcf_spmm_cc_run.dir/DependInfo.cmake"
   "CMakeFiles/tcf_spmm_hybrid_run.dir/DependInfo.cmake"
   "CMakeFiles/swtcf_convert_run.dir/DependInfo.cmake"
+  "CMakeFiles/swtcf_spmm_run.dir/DependInfo.cmake"
   )

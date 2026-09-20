@@ -194,6 +194,19 @@ swtcf_convert_run/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/swtcf_convert_run.dir/build.make CMakeFiles/swtcf_convert_run.dir/build
 .PHONY : swtcf_convert_run/fast
 
+#=============================================================================
+# Target rules for targets named swtcf_spmm_run
+
+# Build rule for target.
+swtcf_spmm_run: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 swtcf_spmm_run
+.PHONY : swtcf_spmm_run
+
+# fast build rule for target.
+swtcf_spmm_run/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swtcf_spmm_run.dir/build.make CMakeFiles/swtcf_spmm_run.dir/build
+.PHONY : swtcf_spmm_run/fast
+
 src/format.o: src/format.cpp.o
 .PHONY : src/format.o
 
@@ -281,6 +294,7 @@ src/swtcf_convert.o: src/swtcf_convert.cu.o
 # target to build an object file
 src/swtcf_convert.cu.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/swtcf_convert_run.dir/build.make CMakeFiles/swtcf_convert_run.dir/src/swtcf_convert.cu.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swtcf_spmm_run.dir/build.make CMakeFiles/swtcf_spmm_run.dir/src/swtcf_convert.cu.o
 .PHONY : src/swtcf_convert.cu.o
 
 src/swtcf_convert.i: src/swtcf_convert.cu.i
@@ -289,6 +303,7 @@ src/swtcf_convert.i: src/swtcf_convert.cu.i
 # target to preprocess a source file
 src/swtcf_convert.cu.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/swtcf_convert_run.dir/build.make CMakeFiles/swtcf_convert_run.dir/src/swtcf_convert.cu.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swtcf_spmm_run.dir/build.make CMakeFiles/swtcf_spmm_run.dir/src/swtcf_convert.cu.i
 .PHONY : src/swtcf_convert.cu.i
 
 src/swtcf_convert.s: src/swtcf_convert.cu.s
@@ -297,6 +312,7 @@ src/swtcf_convert.s: src/swtcf_convert.cu.s
 # target to generate assembly for a file
 src/swtcf_convert.cu.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/swtcf_convert_run.dir/build.make CMakeFiles/swtcf_convert_run.dir/src/swtcf_convert.cu.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swtcf_spmm_run.dir/build.make CMakeFiles/swtcf_spmm_run.dir/src/swtcf_convert.cu.s
 .PHONY : src/swtcf_convert.cu.s
 
 src/swtcf_convert_main.o: src/swtcf_convert_main.cu.o
@@ -322,6 +338,54 @@ src/swtcf_convert_main.s: src/swtcf_convert_main.cu.s
 src/swtcf_convert_main.cu.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/swtcf_convert_run.dir/build.make CMakeFiles/swtcf_convert_run.dir/src/swtcf_convert_main.cu.s
 .PHONY : src/swtcf_convert_main.cu.s
+
+src/swtcf_spmm.o: src/swtcf_spmm.cu.o
+.PHONY : src/swtcf_spmm.o
+
+# target to build an object file
+src/swtcf_spmm.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swtcf_spmm_run.dir/build.make CMakeFiles/swtcf_spmm_run.dir/src/swtcf_spmm.cu.o
+.PHONY : src/swtcf_spmm.cu.o
+
+src/swtcf_spmm.i: src/swtcf_spmm.cu.i
+.PHONY : src/swtcf_spmm.i
+
+# target to preprocess a source file
+src/swtcf_spmm.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swtcf_spmm_run.dir/build.make CMakeFiles/swtcf_spmm_run.dir/src/swtcf_spmm.cu.i
+.PHONY : src/swtcf_spmm.cu.i
+
+src/swtcf_spmm.s: src/swtcf_spmm.cu.s
+.PHONY : src/swtcf_spmm.s
+
+# target to generate assembly for a file
+src/swtcf_spmm.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swtcf_spmm_run.dir/build.make CMakeFiles/swtcf_spmm_run.dir/src/swtcf_spmm.cu.s
+.PHONY : src/swtcf_spmm.cu.s
+
+src/swtcf_spmm_main.o: src/swtcf_spmm_main.cu.o
+.PHONY : src/swtcf_spmm_main.o
+
+# target to build an object file
+src/swtcf_spmm_main.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swtcf_spmm_run.dir/build.make CMakeFiles/swtcf_spmm_run.dir/src/swtcf_spmm_main.cu.o
+.PHONY : src/swtcf_spmm_main.cu.o
+
+src/swtcf_spmm_main.i: src/swtcf_spmm_main.cu.i
+.PHONY : src/swtcf_spmm_main.i
+
+# target to preprocess a source file
+src/swtcf_spmm_main.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swtcf_spmm_run.dir/build.make CMakeFiles/swtcf_spmm_run.dir/src/swtcf_spmm_main.cu.i
+.PHONY : src/swtcf_spmm_main.cu.i
+
+src/swtcf_spmm_main.s: src/swtcf_spmm_main.cu.s
+.PHONY : src/swtcf_spmm_main.s
+
+# target to generate assembly for a file
+src/swtcf_spmm_main.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swtcf_spmm_run.dir/build.make CMakeFiles/swtcf_spmm_run.dir/src/swtcf_spmm_main.cu.s
+.PHONY : src/swtcf_spmm_main.cu.s
 
 src/tcf_spmm.o: src/tcf_spmm.cu.o
 .PHONY : src/tcf_spmm.o
@@ -477,6 +541,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... mma_test"
 	@echo "... swtcf_convert_run"
+	@echo "... swtcf_spmm_run"
 	@echo "... tcf_convert"
 	@echo "... tcf_spmm_cc_run"
 	@echo "... tcf_spmm_hybrid_run"
@@ -496,6 +561,12 @@ help:
 	@echo "... src/swtcf_convert_main.o"
 	@echo "... src/swtcf_convert_main.i"
 	@echo "... src/swtcf_convert_main.s"
+	@echo "... src/swtcf_spmm.o"
+	@echo "... src/swtcf_spmm.i"
+	@echo "... src/swtcf_spmm.s"
+	@echo "... src/swtcf_spmm_main.o"
+	@echo "... src/swtcf_spmm_main.i"
+	@echo "... src/swtcf_spmm_main.s"
 	@echo "... src/tcf_spmm.o"
 	@echo "... src/tcf_spmm.i"
 	@echo "... src/tcf_spmm.s"
