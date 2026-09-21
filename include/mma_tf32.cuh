@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-namespace tcc {
+
 
 __device__ __forceinline__
 void mmaTf32M16N8K8(
@@ -45,5 +45,3 @@ void mmaTf32M16N8K8(
 
 }
 
-
-}

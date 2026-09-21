@@ -9,7 +9,7 @@
 #include <string>
 
 
-namespace tcc {
+
 namespace {
 
 constexpr int THREADS = 256;
@@ -2341,4 +2341,3 @@ void convertCOOToSWTCF(
     );
 }
 
-}  // namespace tcc
