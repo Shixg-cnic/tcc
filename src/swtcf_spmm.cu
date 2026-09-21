@@ -13,33 +13,54 @@ constexpr int WARPS_PER_BLOCK = 8;
 constexpr int WARPS_PER_GROUP = 4;
 constexpr int WARP_SIZE = 32;
 constexpr int GROUPS_PER_BLOCK = 2;
+
 constexpr int FEATURES_PER_WARP = 32;
 constexpr int FEATURES_PER_MMA = 16;
+
 constexpr int SUPER_WINDOW_SIZE = 16;
 constexpr int WINDOWS_PER_ITERATION = 2;
 constexpr int NUM_ITERATIONS = SUPER_WINDOW_SIZE / WINDOWS_PER_ITERATION;
+
 constexpr int SHARED_X_PER_GROUP = SWTCF_COL_WINDOW_WIDTH * SWTCF_FEATURE_DIM;
 constexpr int SHARED_X_ELEMENTS = GROUPS_PER_BLOCK * SHARED_X_PER_GROUP;
+
 constexpr int SHARED_ACC_PER_GROUP = SWTCF_REPEAT_CACHE_SIZE * SWTCF_FEATURE_DIM;
 constexpr int SHARED_ACC_ELEMENTS = GROUPS_PER_BLOCK * SHARED_ACC_PER_GROUP;
 
-constexpr int INT8_WARPS_PER_BLOCK = 8;
-constexpr int INT8_WARPS_PER_GROUP = 4;
-constexpr int INT8_WARP_SIZE = 32;
-constexpr int INT8_GROUPS_PER_BLOCK = 2;
-constexpr int INT8_FEATURES_PER_WARP = 32;
-constexpr int INT8_FEATURES_PER_MMA = 16;
-constexpr int INT8_SUPER_WINDOW_SIZE = 16;
-constexpr int INT8_WINDOWS_PER_ITERATION = 2;
-constexpr int INT8_NUM_ITERATIONS = INT8_SUPER_WINDOW_SIZE / INT8_WINDOWS_PER_ITERATION;
-constexpr int INT8_SHARED_X_PER_GROUP = SWTCF_COL_WINDOW_WIDTH * SWTCF_FEATURE_DIM;
-constexpr int INT8_SHARED_X_ELEMENTS = INT8_GROUPS_PER_BLOCK * INT8_SHARED_X_PER_GROUP;
-constexpr int INT8_SHARED_ACC_PER_GROUP = SWTCF_REPEAT_CACHE_SIZE * SWTCF_FEATURE_DIM;
-constexpr int INT8_SHARED_ACC_ELEMENTS = INT8_GROUPS_PER_BLOCK * INT8_SHARED_ACC_PER_GROUP;
+
+constexpr int QUANT_WARPS_PER_BLOCK = 8;
+constexpr int QUANT_WARPS_PER_GROUP = 4;
+constexpr int QUANT_WARP_SIZE = 32;
+constexpr int QUANT_GROUPS_PER_BLOCK = 2;
+
+constexpr int QUANT_FEATURES_PER_WARP = 32;
+constexpr int QUANT_FEATURES_PER_MMA = 16;
+
+constexpr int QUANT_SUPER_WINDOW_SIZE = 16;
+constexpr int QUANT_WINDOWS_PER_ITERATION = 2;
+constexpr int QUANT_NUM_ITERATIONS = QUANT_SUPER_WINDOW_SIZE / QUANT_WINDOWS_PER_ITERATION;
+
+constexpr int QUANT_SHARED_X_PER_GROUP = SWTCF_COL_WINDOW_WIDTH * SWTCF_FEATURE_DIM;
+constexpr int QUANT_SHARED_X_ELEMENTS = QUANT_GROUPS_PER_BLOCK * QUANT_SHARED_X_PER_GROUP;
+
+constexpr int QUANT_SHARED_ACC_PER_GROUP = SWTCF_REPEAT_CACHE_SIZE * SWTCF_FEATURE_DIM;
+constexpr int QUANT_SHARED_ACC_ELEMENTS = QUANT_GROUPS_PER_BLOCK * QUANT_SHARED_ACC_PER_GROUP;
+
 
 constexpr IndexType INVALID_ROW_SLOT = std::numeric_limits<IndexType>::max();
 
-__device__ __forceinline__ void accumulateOutput(OffsetType superRowBegin, IndexType rowSlot, IndexType feature, ValueType value, int warpGroup, const IndexType* __restrict__ superWindowRows, const std::uint8_t* __restrict__ superWindowRowCacheSlot, ValueType* __restrict__ groupAccumulator, ValueType* __restrict__ matrixY) {
+
+__device__ __forceinline__ void accumulateOutput(
+    OffsetType superRowBegin,
+    IndexType rowSlot,
+    IndexType feature,
+    ValueType value,
+    int warpGroup,
+    const IndexType* __restrict__ superWindowRows,
+    const std::uint8_t* __restrict__ superWindowRowCacheSlot,
+    ValueType* __restrict__ groupAccumulator,
+    ValueType* __restrict__ matrixY
+) {
     if(rowSlot == INVALID_ROW_SLOT || value == 0.0f) return;
 
     const OffsetType superRowIndex = superRowBegin + rowSlot;
@@ -54,14 +75,25 @@ __device__ __forceinline__ void accumulateOutput(OffsetType superRowBegin, Index
     }
 }
 
-__device__ __forceinline__ void accumulateOutputInt8(OffsetType superRowBegin, IndexType rowSlot, IndexType feature, ValueType value, int warpGroup, const IndexType* __restrict__ superWindowRows, const std::uint8_t* __restrict__ superWindowRowCacheSlot, ValueType* __restrict__ groupAccumulator, ValueType* __restrict__ matrixY) {
+
+__device__ __forceinline__ void accumulateOutputQuantized(
+    OffsetType superRowBegin,
+    IndexType rowSlot,
+    IndexType feature,
+    ValueType value,
+    int warpGroup,
+    const IndexType* __restrict__ superWindowRows,
+    const std::uint8_t* __restrict__ superWindowRowCacheSlot,
+    ValueType* __restrict__ groupAccumulator,
+    ValueType* __restrict__ matrixY
+) {
     if(rowSlot == INVALID_ROW_SLOT || value == 0.0f) return;
 
     const OffsetType superRowIndex = superRowBegin + rowSlot;
     const std::uint8_t cacheSlot = superWindowRowCacheSlot[superRowIndex];
 
     if(cacheSlot != SWTCF_INVALID_CACHE_SLOT) {
-        const int index = warpGroup * INT8_SHARED_ACC_PER_GROUP + static_cast<int>(cacheSlot) * SWTCF_FEATURE_DIM + feature;
+        const int index = warpGroup * QUANT_SHARED_ACC_PER_GROUP + static_cast<int>(cacheSlot) * SWTCF_FEATURE_DIM + feature;
         groupAccumulator[index] += value;
     } else {
         const IndexType globalRow = superWindowRows[superRowIndex];
@@ -69,7 +101,22 @@ __device__ __forceinline__ void accumulateOutputInt8(OffsetType superRowBegin, I
     }
 }
 
-__global__ void swtcfSpmmKernel(const OffsetType* __restrict__ superWindowRowOffset, const IndexType* __restrict__ superWindowRows, const std::uint8_t* __restrict__ superWindowRowCacheSlot, const IndexType* __restrict__ superWindowCachedRowSlot, const std::uint8_t* __restrict__ superWindowCachedCount, const OffsetType* __restrict__ colWindowOffset, const IndexType* __restrict__ tileRowSlot, const BitmapType* __restrict__ tileLocalBit, const ValueType* __restrict__ matrixX, ValueType* __restrict__ matrixY, IndexType cols, IndexType numColWindows, IndexType tcThreshold) {
+
+__global__ void swtcfSpmmKernel(
+    const OffsetType* __restrict__ superWindowRowOffset,
+    const IndexType* __restrict__ superWindowRows,
+    const std::uint8_t* __restrict__ superWindowRowCacheSlot,
+    const IndexType* __restrict__ superWindowCachedRowSlot,
+    const std::uint8_t* __restrict__ superWindowCachedCount,
+    const OffsetType* __restrict__ colWindowOffset,
+    const IndexType* __restrict__ tileRowSlot,
+    const BitmapType* __restrict__ tileLocalBit,
+    const ValueType* __restrict__ matrixX,
+    ValueType* __restrict__ matrixY,
+    IndexType cols,
+    IndexType numColWindows,
+    IndexType tcThreshold
+) {
     const IndexType superWindow = static_cast<IndexType>(blockIdx.x);
 
     const int lane = threadIdx.x;
@@ -84,7 +131,10 @@ __global__ void swtcfSpmmKernel(const OffsetType* __restrict__ superWindowRowOff
     __shared__ ValueType sharedX[SHARED_X_ELEMENTS];
     __shared__ ValueType groupAccumulator[SHARED_ACC_ELEMENTS];
 
-    for(int index = blockThread; index < SHARED_ACC_ELEMENTS; index += WARPS_PER_BLOCK * WARP_SIZE) groupAccumulator[index] = 0.0f;
+    for(int index = blockThread; index < SHARED_ACC_ELEMENTS; index += WARPS_PER_BLOCK * WARP_SIZE) {
+        groupAccumulator[index] = 0.0f;
+    }
+
     __syncthreads();
 
     const OffsetType superRowBegin = superWindowRowOffset[superWindow];
@@ -101,8 +151,11 @@ __global__ void swtcfSpmmKernel(const OffsetType* __restrict__ superWindowRowOff
             const IndexType feature = static_cast<IndexType>(index % SWTCF_FEATURE_DIM);
             const IndexType globalColumn = colWindow * SWTCF_COL_WINDOW_WIDTH + localColumn;
 
-            if(validWindow && globalColumn < cols) groupX[index] = matrixX[static_cast<std::size_t>(globalColumn) * SWTCF_FEATURE_DIM + feature];
-            else groupX[index] = 0.0f;
+            if(validWindow && globalColumn < cols) {
+                groupX[index] = matrixX[static_cast<std::size_t>(globalColumn) * SWTCF_FEATURE_DIM + feature];
+            } else {
+                groupX[index] = 0.0f;
+            }
         }
 
         __syncthreads();
@@ -177,7 +230,9 @@ __global__ void swtcfSpmmKernel(const OffsetType* __restrict__ superWindowRowOff
 
                         #pragma unroll
                         for(IndexType localColumn = 0; localColumn < SWTCF_COL_WINDOW_WIDTH; ++localColumn) {
-                            if(rowBits & (1u << localColumn)) sum += groupX[localColumn * SWTCF_FEATURE_DIM + feature];
+                            if(rowBits & (1u << localColumn)) {
+                                sum += groupX[localColumn * SWTCF_FEATURE_DIM + feature];
+                            }
                         }
 
                         const IndexType rowSlot = tileRowSlot[static_cast<std::size_t>(tile) * SWTCF_TILE_ROWS + localRow];
@@ -203,38 +258,60 @@ __global__ void swtcfSpmmKernel(const OffsetType* __restrict__ superWindowRowOff
         const ValueType value1 = groupAccumulator[SHARED_ACC_PER_GROUP + cacheSlot * SWTCF_FEATURE_DIM + feature];
         const ValueType value = value0 + value1;
 
-        if(value != 0.0f) atomicAdd(&matrixY[static_cast<std::size_t>(globalRow) * SWTCF_FEATURE_DIM + feature], value);
+        if(value != 0.0f) {
+            atomicAdd(&matrixY[static_cast<std::size_t>(globalRow) * SWTCF_FEATURE_DIM + feature], value);
+        }
     }
 }
 
-__global__ void swtcfSpmmInt8Kernel(const OffsetType* __restrict__ superWindowRowOffset, const IndexType* __restrict__ superWindowRows, const std::uint8_t* __restrict__ superWindowRowCacheSlot, const IndexType* __restrict__ superWindowCachedRowSlot, const std::uint8_t* __restrict__ superWindowCachedCount, const OffsetType* __restrict__ colWindowOffset, const IndexType* __restrict__ tileRowSlot, const BitmapType* __restrict__ tileLocalBit, const std::int8_t* __restrict__ quantizedX, const ValueType* __restrict__ scales, const IndexType* __restrict__ srcGlobal, ValueType* __restrict__ matrixY, IndexType cols, IndexType numColWindows, IndexType tcThreshold) {
+
+__global__ void swtcfSpmmQuantizedKernel(
+    const OffsetType* __restrict__ superWindowRowOffset,
+    const IndexType* __restrict__ superWindowRows,
+    const std::uint8_t* __restrict__ superWindowRowCacheSlot,
+    const IndexType* __restrict__ superWindowCachedRowSlot,
+    const std::uint8_t* __restrict__ superWindowCachedCount,
+    const OffsetType* __restrict__ colWindowOffset,
+    const IndexType* __restrict__ tileRowSlot,
+    const BitmapType* __restrict__ tileLocalBit,
+    const std::int8_t* __restrict__ quantizedX,
+    const ValueType* __restrict__ scales,
+    const IndexType* __restrict__ srcGlobal,
+    ValueType* __restrict__ matrixY,
+    IndexType cols,
+    IndexType numColWindows,
+    IndexType tcThreshold
+) {
     const IndexType superWindow = static_cast<IndexType>(blockIdx.x);
 
     const int lane = threadIdx.x;
     const int warp = threadIdx.y;
-    const int warpGroup = warp / INT8_WARPS_PER_GROUP;
-    const int warpInGroup = warp % INT8_WARPS_PER_GROUP;
-    const int groupThread = warpInGroup * INT8_WARP_SIZE + lane;
-    const int blockThread = warp * INT8_WARP_SIZE + lane;
+    const int warpGroup = warp / QUANT_WARPS_PER_GROUP;
+    const int warpInGroup = warp % QUANT_WARPS_PER_GROUP;
+    const int groupThread = warpInGroup * QUANT_WARP_SIZE + lane;
+    const int blockThread = warp * QUANT_WARP_SIZE + lane;
     const int mmaGroup = lane >> 2;
     const int threadInGroup = lane & 3;
 
-    __shared__ ValueType sharedX[INT8_SHARED_X_ELEMENTS];
-    __shared__ ValueType groupAccumulator[INT8_SHARED_ACC_ELEMENTS];
+    __shared__ ValueType sharedX[QUANT_SHARED_X_ELEMENTS];
+    __shared__ ValueType groupAccumulator[QUANT_SHARED_ACC_ELEMENTS];
 
-    for(int index = blockThread; index < INT8_SHARED_ACC_ELEMENTS; index += INT8_WARPS_PER_BLOCK * INT8_WARP_SIZE) groupAccumulator[index] = 0.0f;
+    for(int index = blockThread; index < QUANT_SHARED_ACC_ELEMENTS; index += QUANT_WARPS_PER_BLOCK * QUANT_WARP_SIZE) {
+        groupAccumulator[index] = 0.0f;
+    }
+
     __syncthreads();
 
     const OffsetType superRowBegin = superWindowRowOffset[superWindow];
 
-    for(int iteration = 0; iteration < INT8_NUM_ITERATIONS; ++iteration) {
-        const IndexType localWindow = static_cast<IndexType>(iteration * INT8_WINDOWS_PER_ITERATION + warpGroup);
-        const IndexType colWindow = superWindow * INT8_SUPER_WINDOW_SIZE + localWindow;
+    for(int iteration = 0; iteration < QUANT_NUM_ITERATIONS; ++iteration) {
+        const IndexType localWindow = static_cast<IndexType>(iteration * QUANT_WINDOWS_PER_ITERATION + warpGroup);
+        const IndexType colWindow = superWindow * QUANT_SUPER_WINDOW_SIZE + localWindow;
         const bool validWindow = colWindow < numColWindows;
 
-        ValueType* groupX = &sharedX[warpGroup * INT8_SHARED_X_PER_GROUP];
+        ValueType* groupX = &sharedX[warpGroup * QUANT_SHARED_X_PER_GROUP];
 
-        for(int index = groupThread; index < INT8_SHARED_X_PER_GROUP; index += INT8_WARPS_PER_GROUP * INT8_WARP_SIZE) {
+        for(int index = groupThread; index < QUANT_SHARED_X_PER_GROUP; index += QUANT_WARPS_PER_GROUP * QUANT_WARP_SIZE) {
             const IndexType localColumn = static_cast<IndexType>(index / SWTCF_FEATURE_DIM);
             const IndexType feature = static_cast<IndexType>(index % SWTCF_FEATURE_DIM);
             const IndexType localSource = colWindow * SWTCF_COL_WINDOW_WIDTH + localColumn;
@@ -254,7 +331,7 @@ __global__ void swtcfSpmmInt8Kernel(const OffsetType* __restrict__ superWindowRo
             const OffsetType tileBegin = colWindowOffset[colWindow];
             const OffsetType tileEnd = colWindowOffset[colWindow + 1];
 
-            const IndexType featureBase = static_cast<IndexType>(warpInGroup * INT8_FEATURES_PER_WARP);
+            const IndexType featureBase = static_cast<IndexType>(warpInGroup * QUANT_FEATURES_PER_WARP);
             const IndexType column0 = static_cast<IndexType>(threadInGroup);
             const IndexType column1 = static_cast<IndexType>(threadInGroup + 4);
 
@@ -266,10 +343,10 @@ __global__ void swtcfSpmmInt8Kernel(const OffsetType* __restrict__ superWindowRo
             mmaA0[2] = groupX[column1 * SWTCF_FEATURE_DIM + featureBase + mmaGroup];
             mmaA0[3] = groupX[column1 * SWTCF_FEATURE_DIM + featureBase + mmaGroup + 8];
 
-            mmaA1[0] = groupX[column0 * SWTCF_FEATURE_DIM + featureBase + INT8_FEATURES_PER_MMA + mmaGroup];
-            mmaA1[1] = groupX[column0 * SWTCF_FEATURE_DIM + featureBase + INT8_FEATURES_PER_MMA + mmaGroup + 8];
-            mmaA1[2] = groupX[column1 * SWTCF_FEATURE_DIM + featureBase + INT8_FEATURES_PER_MMA + mmaGroup];
-            mmaA1[3] = groupX[column1 * SWTCF_FEATURE_DIM + featureBase + INT8_FEATURES_PER_MMA + mmaGroup + 8];
+            mmaA1[0] = groupX[column0 * SWTCF_FEATURE_DIM + featureBase + QUANT_FEATURES_PER_MMA + mmaGroup];
+            mmaA1[1] = groupX[column0 * SWTCF_FEATURE_DIM + featureBase + QUANT_FEATURES_PER_MMA + mmaGroup + 8];
+            mmaA1[2] = groupX[column1 * SWTCF_FEATURE_DIM + featureBase + QUANT_FEATURES_PER_MMA + mmaGroup];
+            mmaA1[3] = groupX[column1 * SWTCF_FEATURE_DIM + featureBase + QUANT_FEATURES_PER_MMA + mmaGroup + 8];
 
             for(OffsetType tile = tileBegin; tile < tileEnd; ++tile) {
                 const BitmapType bitmap = tileLocalBit[tile];
@@ -300,15 +377,15 @@ __global__ void swtcfSpmmInt8Kernel(const OffsetType* __restrict__ superWindowRo
                     const IndexType feature2 = featureBase + mmaGroup + 16;
                     const IndexType feature3 = featureBase + mmaGroup + 24;
 
-                    accumulateOutputInt8(superRowBegin, rowSlot0, feature0, mmaC0[0], warpGroup, superWindowRows, superWindowRowCacheSlot, groupAccumulator, matrixY);
-                    accumulateOutputInt8(superRowBegin, rowSlot0, feature1, mmaC0[2], warpGroup, superWindowRows, superWindowRowCacheSlot, groupAccumulator, matrixY);
-                    accumulateOutputInt8(superRowBegin, rowSlot0, feature2, mmaC1[0], warpGroup, superWindowRows, superWindowRowCacheSlot, groupAccumulator, matrixY);
-                    accumulateOutputInt8(superRowBegin, rowSlot0, feature3, mmaC1[2], warpGroup, superWindowRows, superWindowRowCacheSlot, groupAccumulator, matrixY);
+                    accumulateOutputQuantized(superRowBegin, rowSlot0, feature0, mmaC0[0], warpGroup, superWindowRows, superWindowRowCacheSlot, groupAccumulator, matrixY);
+                    accumulateOutputQuantized(superRowBegin, rowSlot0, feature1, mmaC0[2], warpGroup, superWindowRows, superWindowRowCacheSlot, groupAccumulator, matrixY);
+                    accumulateOutputQuantized(superRowBegin, rowSlot0, feature2, mmaC1[0], warpGroup, superWindowRows, superWindowRowCacheSlot, groupAccumulator, matrixY);
+                    accumulateOutputQuantized(superRowBegin, rowSlot0, feature3, mmaC1[2], warpGroup, superWindowRows, superWindowRowCacheSlot, groupAccumulator, matrixY);
 
-                    accumulateOutputInt8(superRowBegin, rowSlot1, feature0, mmaC0[1], warpGroup, superWindowRows, superWindowRowCacheSlot, groupAccumulator, matrixY);
-                    accumulateOutputInt8(superRowBegin, rowSlot1, feature1, mmaC0[3], warpGroup, superWindowRows, superWindowRowCacheSlot, groupAccumulator, matrixY);
-                    accumulateOutputInt8(superRowBegin, rowSlot1, feature2, mmaC1[1], warpGroup, superWindowRows, superWindowRowCacheSlot, groupAccumulator, matrixY);
-                    accumulateOutputInt8(superRowBegin, rowSlot1, feature3, mmaC1[3], warpGroup, superWindowRows, superWindowRowCacheSlot, groupAccumulator, matrixY);
+                    accumulateOutputQuantized(superRowBegin, rowSlot1, feature0, mmaC0[1], warpGroup, superWindowRows, superWindowRowCacheSlot, groupAccumulator, matrixY);
+                    accumulateOutputQuantized(superRowBegin, rowSlot1, feature1, mmaC0[3], warpGroup, superWindowRows, superWindowRowCacheSlot, groupAccumulator, matrixY);
+                    accumulateOutputQuantized(superRowBegin, rowSlot1, feature2, mmaC1[1], warpGroup, superWindowRows, superWindowRowCacheSlot, groupAccumulator, matrixY);
+                    accumulateOutputQuantized(superRowBegin, rowSlot1, feature3, mmaC1[3], warpGroup, superWindowRows, superWindowRowCacheSlot, groupAccumulator, matrixY);
                 } else {
                     const IndexType feature = static_cast<IndexType>(groupThread);
 
@@ -320,11 +397,13 @@ __global__ void swtcfSpmmInt8Kernel(const OffsetType* __restrict__ superWindowRo
 
                         #pragma unroll
                         for(IndexType localColumn = 0; localColumn < SWTCF_COL_WINDOW_WIDTH; ++localColumn) {
-                            if(rowBits & (1u << localColumn)) sum += groupX[localColumn * SWTCF_FEATURE_DIM + feature];
+                            if(rowBits & (1u << localColumn)) {
+                                sum += groupX[localColumn * SWTCF_FEATURE_DIM + feature];
+                            }
                         }
 
                         const IndexType rowSlot = tileRowSlot[static_cast<std::size_t>(tile) * SWTCF_TILE_ROWS + localRow];
-                        accumulateOutputInt8(superRowBegin, rowSlot, feature, sum, warpGroup, superWindowRows, superWindowRowCacheSlot, groupAccumulator, matrixY);
+                        accumulateOutputQuantized(superRowBegin, rowSlot, feature, sum, warpGroup, superWindowRows, superWindowRowCacheSlot, groupAccumulator, matrixY);
                     }
                 }
             }
@@ -336,24 +415,35 @@ __global__ void swtcfSpmmInt8Kernel(const OffsetType* __restrict__ superWindowRo
     const IndexType cachedCount = static_cast<IndexType>(superWindowCachedCount[superWindow]);
     const int flushElements = static_cast<int>(cachedCount * SWTCF_FEATURE_DIM);
 
-    for(int index = blockThread; index < flushElements; index += INT8_WARPS_PER_BLOCK * INT8_WARP_SIZE) {
+    for(int index = blockThread; index < flushElements; index += QUANT_WARPS_PER_BLOCK * QUANT_WARP_SIZE) {
         const IndexType cacheSlot = static_cast<IndexType>(index / SWTCF_FEATURE_DIM);
         const IndexType feature = static_cast<IndexType>(index % SWTCF_FEATURE_DIM);
         const IndexType rowSlot = superWindowCachedRowSlot[static_cast<std::size_t>(superWindow) * SWTCF_REPEAT_CACHE_SIZE + cacheSlot];
         const IndexType globalRow = superWindowRows[superRowBegin + rowSlot];
 
         const ValueType value0 = groupAccumulator[cacheSlot * SWTCF_FEATURE_DIM + feature];
-        const ValueType value1 = groupAccumulator[INT8_SHARED_ACC_PER_GROUP + cacheSlot * SWTCF_FEATURE_DIM + feature];
+        const ValueType value1 = groupAccumulator[QUANT_SHARED_ACC_PER_GROUP + cacheSlot * SWTCF_FEATURE_DIM + feature];
         const ValueType value = value0 + value1;
 
-        if(value != 0.0f) atomicAdd(&matrixY[static_cast<std::size_t>(globalRow) * SWTCF_FEATURE_DIM + feature], value);
+        if(value != 0.0f) {
+            atomicAdd(&matrixY[static_cast<std::size_t>(globalRow) * SWTCF_FEATURE_DIM + feature], value);
+        }
     }
 }
 
 }
 
-void launchSWTCFSpMM(const DeviceSWTCFMatrix& matrix, const ValueType* matrixX, ValueType* matrixY, IndexType tcThreshold, cudaStream_t stream) {
-    if(matrix.superWindowSize != SUPER_WINDOW_SIZE) throw std::runtime_error("SWTCF SpMM V1 requires superWindowSize=16");
+
+void launchSWTCFSpMM(
+    const DeviceSWTCFMatrix& matrix,
+    const ValueType* matrixX,
+    ValueType* matrixY,
+    IndexType tcThreshold,
+    cudaStream_t stream
+) {
+    if(matrix.superWindowSize != SUPER_WINDOW_SIZE) {
+        throw std::runtime_error("SWTCF SpMM V1 requires superWindowSize=16");
+    }
 
     const dim3 block(WARP_SIZE, WARPS_PER_BLOCK);
     const dim3 grid(matrix.numSuperWindows);
@@ -375,13 +465,24 @@ void launchSWTCFSpMM(const DeviceSWTCFMatrix& matrix, const ValueType* matrixX, 
     );
 }
 
-void launchSWTCFSpMMInt8(const DeviceSWTCFMatrix& matrix, const std::int8_t* quantizedX, const ValueType* scales, const IndexType* srcGlobal, ValueType* matrixY, IndexType tcThreshold, cudaStream_t stream) {
-    if(matrix.superWindowSize != INT8_SUPER_WINDOW_SIZE) throw std::runtime_error("INT8 SWTCF SpMM requires superWindowSize=16");
 
-    const dim3 block(INT8_WARP_SIZE, INT8_WARPS_PER_BLOCK);
+void launchSWTCFSpMMQuantized(
+    const DeviceSWTCFMatrix& matrix,
+    const std::int8_t* quantizedX,
+    const ValueType* scales,
+    const IndexType* srcGlobal,
+    ValueType* matrixY,
+    IndexType tcThreshold,
+    cudaStream_t stream
+) {
+    if(matrix.superWindowSize != QUANT_SUPER_WINDOW_SIZE) {
+        throw std::runtime_error("Quantized SWTCF SpMM requires superWindowSize=16");
+    }
+
+    const dim3 block(QUANT_WARP_SIZE, QUANT_WARPS_PER_BLOCK);
     const dim3 grid(matrix.numSuperWindows);
 
-    swtcfSpmmInt8Kernel<<<grid, block, 0, stream>>>(
+    swtcfSpmmQuantizedKernel<<<grid, block, 0, stream>>>(
         matrix.superWindowRowOffset,
         matrix.superWindowRows,
         matrix.superWindowRowCacheSlot,
